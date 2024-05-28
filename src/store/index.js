@@ -22,13 +22,14 @@ export default createStore({
   },
   // las acciones llaman a los mutations y puedo hacer el llamado el servidor
   actions: {
-    login({commit}, { email, password }) {
+    login({commit}, { email, password, router }) {
       signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
           commit('setAuthUser', userCredential.user);
+          router.push({name: 'admin-productos'})
         })
         .catch( error => {
-          // console.error(error);
+          console.error(error);
           commit('setErrorMsg', 'Credenciales Incorrectas')
         })
     }
