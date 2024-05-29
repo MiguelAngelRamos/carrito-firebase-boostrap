@@ -20,6 +20,12 @@ npm install firebase vuefire
 npm install bootstrap --save
 ```
 
+## Instalar Yup
+
+```sh
+npm install yup --save
+```
+
 # Nombre de variables de Entorno en el archivo .env.local
 ```
 VITE_FIREBASE_API_KEY = 

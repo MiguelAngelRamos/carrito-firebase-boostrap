@@ -12,7 +12,7 @@ export default function useImage() {
     url, // variable que nos va indicar la URL de la imagen una vez que se sube a firebase
     upload, // función que vamos a utilizar para subir la imagen
     uploadError, // Para manejar el error al subir la imagen
-    uploadProgress // Para mostrar el progeso de la subida
+    uploadProgress // Para mostrar el progreso de la subida
   } = useStorageFile(storageRefPath);
 
   console.log('Generated URL:', url);

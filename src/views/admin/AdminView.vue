@@ -13,6 +13,7 @@ const { productosCollection } = useProductos()
       <thead>
         <tr>
           <th>Nombre</th>
+          <th>Imagen</th>
           <th>Precio</th>
           <th>Stock</th>
           <th>Acciones</th>
@@ -22,6 +23,7 @@ const { productosCollection } = useProductos()
       <tbody>
         <tr v-for="producto in productosCollection">
           <td>{{ producto.nombre }}</td>
+          <td><img :src="producto.imagen" alt="imagen-producto" width="60"></td>
           <td>{{ producto.precio }}</td>
           <td>{{ producto.stock }}</td>
           <td>

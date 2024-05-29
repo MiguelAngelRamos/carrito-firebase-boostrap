@@ -26,15 +26,21 @@ export default createStore({
       signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
           commit('setAuthUser', userCredential.user);
-          router.push({name: 'admin-productos'})
+          router.push({name: 'home'})
         })
         .catch( error => {
           console.error(error);
           commit('setErrorMsg', 'Credenciales Incorrectas')
         })
+    },
+    logout({commit}, router) {
+      signOut(auth).then( () => {
+        commit('setAuthUser', null);
+        router.push({name: 'login'})
+      }).catch(error => console.error(error))
     }
   }, 
   getters: {
-    
+    isAuthenticated: state => !!state.authUser,
   }
 })
