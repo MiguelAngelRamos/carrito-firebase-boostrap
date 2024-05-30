@@ -58,7 +58,7 @@ const hasError = computed(() => store.state.errorMsg)
             <div v-if="password.errorMessage" id="emailHelp" class="text-danger form-text">{{ password.errorMessage.value }}</div>
           </div>
 
-          <button type="submit" class="btn btn-primary w-100" @click="submit">Ingresar</button>
+          <button type="submit" class="btn btn-dark w-100" @click="submit">Ingresar</button>
         </form>
 
       </div>

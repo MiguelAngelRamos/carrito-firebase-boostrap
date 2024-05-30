@@ -7,13 +7,13 @@ import { useRouter } from 'vue-router';
 
 // componsable
 import useImage from '@/composables/useImage';
-import { productSchema  } from '@/validation/productSchema';
+import { productSchema } from '@/validation/productSchema';
 
 const { url, uploadImage, image } = useImage();
 const router = useRouter();
 const db = useFirestore();
 
-const { handleSubmit } = useForm({productSchema});
+const { handleSubmit } = useForm({ productSchema });
 
 const nombre = useField('nombre');
 // const imagen = useField('imagen');
@@ -24,22 +24,22 @@ const stock = useField('stock');
 const caracteristicas = ref([{ key: '', value: '' }]);
 
 const addCaracteristica = () => {
-    caracteristicas.value.push({ key: '', value: '' });
+  caracteristicas.value.push({ key: '', value: '' });
 };
 
 const removeCaracteristica = (index) => {
-    caracteristicas.value.splice(index, 1);
+  caracteristicas.value.splice(index, 1);
 };
 
 
 const submit = handleSubmit(async (values) => {
-  const product = {...values };
+  const product = { ...values };
 
   const formattedCaracteristicas = caracteristicas.value.reduce((acc, { key, value }) => {
-        acc[key] = value;
-        return acc;
-    }, {});
-  
+    acc[key] = value;
+    return acc;
+  }, {});
+
   const docRef = await addDoc(collection(db, 'productos'), {
     ...product,
     imagen: url.value,
@@ -72,7 +72,7 @@ const submit = handleSubmit(async (values) => {
             <img :src="image" class="img-thumbnail rounded mx-auto d-block" alt="imagen producto" width="150">
           </div>
 
-          
+
           <div class="mb-3">
             <label for="precio" class="form-label">Precio</label>
             <input type="number" class="form-control" id="precio" v-model="precio.value.value" required>
@@ -84,14 +84,20 @@ const submit = handleSubmit(async (values) => {
           <div class="mb-3">
             <label for="caracteristicas" class="form-label">Características</label>
             <div v-for="(caracteristica, index) in caracteristicas" :key="index" class="d-flex mb-2">
-                <input type="text" class="form-control me-2" v-model="caracteristica.key" placeholder="Característica" required>
-                <input type="text" class="form-control me-2" v-model="caracteristica.value" placeholder="Valor" required>
-                <button type="button" class="btn btn-danger" @click="removeCaracteristica(index)">Eliminar</button>
+              <input type="text" class="form-control me-2" v-model="caracteristica.key" placeholder="Característica"
+                required>
+              <input type="text" class="form-control me-2" v-model="caracteristica.value" placeholder="Valor" required>
+              <button type="button" class="btn btn-danger" @click="removeCaracteristica(index)"><i
+                  class="fa-solid fa-trash"></i></button>
             </div>
-            <button type="button" class="btn btn-primary" @click="addCaracteristica">Agregar Característica</button>
-        </div>
 
-          <button type="submit" class="btn btn-primary" @click="submit">Guardar</button>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-dark" @click="addCaracteristica">Agregar Caracteristica <i
+                class="fa-solid fa-plus"></i></button>
+            <button type="submit" class="btn btn-dark" @click="submit">Guardar <i class="fa-solid fa-floppy-disk"></i></button>
+          </div>
+
         </form>
       </div>
     </div>
