@@ -20,6 +20,7 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue')
     },
+
     {
       path:'/admin',
       name: 'admin',
@@ -34,7 +35,12 @@ const router = createRouter({
           path: 'nuevo',
           name: 'nuevo-producto',
           component: () => import('../views/admin/NewProductView.vue')
-        }
+        },
+        {
+          path: 'editar/:id',
+          name: 'editar-producto',
+          component: () => import('../views/admin/EditProductView.vue')
+        },
       ]
     }
   ]

@@ -15,7 +15,7 @@ const password = useField('password');
 
 
 const submit = handleSubmit( values => {
-  // console.log(values);
+
   store.dispatch('login',{...values, router})
 })
 

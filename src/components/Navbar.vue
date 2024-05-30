@@ -7,7 +7,7 @@ const router = useRouter();
 const store = useStore();
 
 const isAuthenticated = computed(() => store.getters.isAuthenticated);
-console.log(isAuthenticated.value);
+
 
 const logout = () => {
  store.dispatch('logout',router )
@@ -16,7 +16,7 @@ const logout = () => {
 </script>
 
 <template>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-shadow">
   <div class="container-fluid">
     <router-link class="navbar-brand" :to="{name: 'home'}">Ecommerce</router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,3 +41,10 @@ const logout = () => {
   </div>
 </nav>
 </template>
+
+<style scoped>
+.navbar-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+</style>
