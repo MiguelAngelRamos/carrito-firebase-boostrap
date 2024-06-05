@@ -26,6 +26,11 @@ npm install bootstrap --save
 npm install yup --save
 ```
 
+## Instalar ui
+```sh
+npm install uid --save
+```
+
 # Nombre de variables de Entorno en el archivo .env.local
 ```
 VITE_FIREBASE_API_KEY = 
